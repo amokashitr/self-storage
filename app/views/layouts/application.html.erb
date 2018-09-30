@@ -9,7 +9,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body background="images/storage-unit-bg.jpg">
+    <nav class="navbar navbar-default" style="background-color: currentColor">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to 'Home', root_path, class: "navbar-brand", style: 'color:white' %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

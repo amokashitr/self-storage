@@ -1,7 +1,10 @@
 <%= form_tag filter_storage_units_path, method: :get, remote: true do |f| %>
-
-  <%= check_box_tag 'filters[]', '1st Floor', false, class: 'storage_unit_filters' %> 1st Floor
-  <%= check_box_tag 'filters[]', '24 Hour Access', false, class: 'storage_unit_filters' %> 24 Hour Access
+  <div>
+    <%= check_box_tag 'filters[]', '1st Floor', false, class: 'storage_unit_filters' %> 1st Floor
+  </div>
+  <div>
+    <%= check_box_tag 'filters[]', '24 Hour Access', false, class: 'storage_unit_filters' %> 24 Hour Access
+  </div>
 
   <%= hidden_field_tag 'city_zip', params[:city_zip] if params[:city_zip].present? %>
 

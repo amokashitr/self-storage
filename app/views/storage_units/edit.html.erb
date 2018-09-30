@@ -11,11 +11,12 @@
       <%= f.file_field :images, multiple: true %><br><br><br>
     </div>
 
-    <div class="form-row">
-      <button type="submit" class="btn btn-primary">Save</button><br>
-    </div><br><br>
+    <div class="row">
+      <button type="submit" class="col-md-auto btn btn-primary pull-left ">Save</button><br>
+      <button class="col-md-auto btn btn-default pull-right" style="margin-left: 85%">
+        <%= link_to 'Back', storage_units_path %>
+      </button>
+    </div>
   <% end %>
 
-  <%= link_to 'Show', @storage_unit %> |
-  <%= link_to 'Back', storage_units_path %>
 </div>
