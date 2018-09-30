@@ -1,0 +1,17 @@
+<div class="form-row"><br>
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity, placeholder: 'Quantity', class: 'form-control' %><br><br><br>
+</div>
+<div class="form-row">
+  <%= f.label :rate %>
+  <%= f.text_field :rate, placeholder: 'Rate', class: 'form-control' %><br><br><br>
+</div>
+<div class="form-row">
+  <%= f.label :offer %>
+  <%= f.text_field :offer, placeholder: 'Offer', class: 'form-control' %><br><br><br>
+</div>
+<div class="form-row">
+  <%= f.label :size %>
+  <%= f.select :length, options_for_select(load_size_ranges, f.object.length), {}, class: 'form-control custom-select' %>
+  <%= f.select :breadth, options_for_select(load_size_ranges, f.object.breadth), {}, class: 'form-control custom-select' %>
+</div>

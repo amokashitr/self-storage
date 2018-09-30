@@ -1,0 +1,21 @@
+<div class="container">
+  <br><br><h1>Editing Storage Unit</h1>
+
+  <%= form_for @storage_unit do |f| %>
+    <%= render partial: 'form', locals: {f: f} %>
+
+    <%= render partial: 'shared/remove_images', locals: { images: @storage_unit.images } %>
+
+    <div class="form-row">
+      <%= f.label :images %>&emsp;
+      <%= f.file_field :images, multiple: true %><br><br><br>
+    </div>
+
+    <div class="form-row">
+      <button type="submit" class="btn btn-primary">Save</button><br>
+    </div><br><br>
+  <% end %>
+
+  <%= link_to 'Show', @storage_unit %> |
+  <%= link_to 'Back', storage_units_path %>
+</div>

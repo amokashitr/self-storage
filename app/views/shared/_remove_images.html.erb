@@ -1,0 +1,7 @@
+Check the box to remove images<br>
+<% images.each do |image| %>
+  <%= image_tag image.variant(resize: "100x100!") %> &ensp;&nbsp;
+  <%= check_box_tag 'image_ids[]', image.blob_id %> &emsp;&emsp;
+<% end %><br><br><br>
+
+Choose images to upload:
