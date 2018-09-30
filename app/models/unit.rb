@@ -1,5 +1,7 @@
 class Unit < ApplicationRecord
 
+  include ImageSetter, AmenitySetter
+
   has_many_attached :images
 
   belongs_to :storage_unit

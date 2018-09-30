@@ -17,7 +17,8 @@ class UnitsController < ApplicationController
   end
 
   def update
-    @unit.update(unit_params)
+    @unit.update_with_images(params[:image_ids], unit_params)
+    @unit.update_amenities(params[:amenity_ids])
   end
 
   def destroy
@@ -31,7 +32,7 @@ class UnitsController < ApplicationController
     end
 
     def unit_params
-      params.require(:unit).permit(:length, :breadth, :quantity, :rate, :offer)
+      params.require(:unit).permit(:length, :breadth, :quantity, :rate, :offer, images:[])
     end
 
     def set_storage_unit

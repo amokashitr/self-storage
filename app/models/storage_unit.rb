@@ -1,11 +1,15 @@
 class StorageUnit < ApplicationRecord
 
+  include ImageSetter, AmenitySetter
+
   has_many_attached :images
 
   has_many :units
   has_many :storage_unit_amenities
   has_many :amenities, through: :storage_unit_amenities
   has_one :address
+
+  accepts_nested_attributes_for :address, allow_destroy: true, reject_if: :all_blank
 
   scope :city_zip, ->(city_zip) {
     joins(:address).where('city ilike ?', "%#{city_zip}%").references(:addresses).or(
@@ -17,13 +21,12 @@ class StorageUnit < ApplicationRecord
     joins(:amenities).where('amenities.feature like ?', "%#{feature}%").references(:amenities)
   }
 
-  def update_with_images(image_ids, storage_unit_params)
-    unless image_ids.nil?
-      image_ids.each do |image_id|
-        self.images.find_by(blob_id: image_id).purge
-      end
-    end
-    return self.update(storage_unit_params)
+  # Currently the rating is set as default as review / rating feature has not been implemented
+  before_create :set_rating
+  
+  def set_rating
+    self.rating = 4.3
   end
+  # ................................................
 
 end

@@ -13,6 +13,7 @@ class StorageUnitsController < ApplicationController
 
   def update
     @storage_unit.update_with_images(params[:image_ids], storage_unit_params)
+    @storage_unit.update_amenities(params[:amenity_ids])
   end
 
   def destroy
@@ -35,7 +36,8 @@ class StorageUnitsController < ApplicationController
     end
 
     def storage_unit_params
-      params.require(:storage_unit).permit(:name, :rating, :about, :contact_no, images:[])
+      params.require(:storage_unit).permit(:name, :about, :contact_no, images:[],
+                                            address_attributes: [:id, :city, :state, :street, :zip, :_destroy])
     end
 
     def load_storage_units

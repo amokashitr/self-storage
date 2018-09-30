@@ -67,3 +67,6 @@ gem 'jquery-ui-rails'
 
 # Bootstrap Integration
 gem 'bootstrap'
+
+# Nested form
+gem 'cocoon', '~> 1.2', '>= 1.2.9'

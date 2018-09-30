@@ -15,3 +15,5 @@
   <%= f.select :length, options_for_select(load_size_ranges, f.object.length), {}, class: 'form-control custom-select' %>
   <%= f.select :breadth, options_for_select(load_size_ranges, f.object.breadth), {}, class: 'form-control custom-select' %>
 </div>
+
+<%= render partial: 'shared/provided_amenities', locals: {f: f} %>

@@ -1,0 +1,16 @@
+<div class="form-row">
+  <div class="col-lg-12">
+    <label>Provided Amenities:</label>
+  </div>
+</div>
+
+<% (Amenity::CATEGORY).each do |category| %>
+  <div class="form-row">
+    <div class="col-lg-12">
+      <% Amenity.category(category).each do |amenity| %>
+        <%= check_box_tag 'amenity_ids[]', amenity.id, (f.object.amenities.include? amenity) %>
+        <%= amenity.feature %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
