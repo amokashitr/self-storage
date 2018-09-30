@@ -21,12 +21,18 @@ class StorageUnitsController < ApplicationController
   end
 
   def filter
-    return @storage_units unless params[:filters].present?
-    storage_units = []
-    params[:filters].each do |filter|
-      storage_units << @storage_units.associated_amenities(filter)
+    return @storage_units unless (params[:filters].present? || params[:sort_by].present?)
+    if params[:sort_by].present?
+      @storage_units = @storage_units.order(:name) if params[:sort_by] == 'name'
+      @storage_units = @storage_units.order(rating: :desc) if params[:sort_by] == 'rating' 
     end
-    @storage_units = storage_units.inject(:&)
+    if params[:filters].present?
+      storage_units = []
+      params[:filters].each do |filter|
+        storage_units << @storage_units.associated_amenities(filter)
+      end
+      @storage_units = storage_units.inject(:&)
+    end
   end
 
   private
