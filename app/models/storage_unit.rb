@@ -26,12 +26,4 @@ class StorageUnit < ApplicationRecord
     joins(:units).where('units.breadth = ?', breadth).references(:units)
   }
 
-  # Currently the rating is set as default as review / rating feature has not been implemented
-  before_create :set_rating
-  
-  def set_rating
-    self.rating = 4.3
-  end
-  # ................................................
-
 end

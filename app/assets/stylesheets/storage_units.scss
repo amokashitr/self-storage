@@ -10,3 +10,102 @@
   outline: none;
   box-shadow: none;
 }
+.name-heading{
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+h5 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+.contact, .address {
+  float: left;  
+}
+.rating, .about{
+  display: inline-block;
+  width: 100%;
+}
+
+.about h5{
+  border-bottom: 2px solid #333;
+  color: #333;
+}
+
+.about-content {  
+  font-size: 13px;
+  color: #333;
+}
+
+.facility_amenities {      
+    margin-top: 9.9%;
+}
+.facility_amenities h6{
+  font-size: 15px;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  width: 100%; 
+}
+.unit-section {
+  background-color: #334a58;
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  select {
+    background: inherit;
+    color: #fff;
+  }
+}
+.sidebar-nav {
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 5px;
+  h3 {
+    font-size: 20px;
+  }
+}
+#storage_units_list h1 {
+  font-size: 25px;
+}
+
+.unit-detail {
+  display: inline-block;
+  width: 100%;
+}
+.custom-link {
+  text-decoration: none;
+  color: #333;
+  &:hover{
+    text-decoration: none;
+    color: #333;
+  }
+}
+.unit-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;  
+  color: #333;
+  &:hover {
+    color: #333;
+    text-decoration: none
+  }
+}
+.unit-address, .unit-contact, .unit-rating {
+  font-size: 13px;
+}
+
+.text-centered {
+  text-align:center;
+}
+
+.pagination {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  .previous_page, .next_page, em, a {
+    margin: 0 10px;
+  }
+}

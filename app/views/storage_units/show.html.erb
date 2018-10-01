@@ -1,46 +1,54 @@
 <div class="container">
-  <h1><%= @storage_unit.name.upcase %>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="name-heading"><%= @storage_unit.name.upcase %> </h1>
+    <div>
+      <div class="address">
+        <h5><%= get_address(@storage_unit) %>&emsp;-&emsp;</h5>
+      </div>
 
-  <div>
-    <h5>Address: <%= get_address(@storage_unit) %></h5>
+      <div class="contact">
+        <h5 style="color: #c00"><%= @storage_unit.contact_no %></h5>
+      </div>
+    </div>
+
+    <div class="rating">
+      <h5 style="color: #c00"><%= @storage_unit.rating %> out of 5</h5>
+    </div>
+
+    <div class="about">
+      <h5>About <%= @storage_unit.name %></h5>
+      <p class="about-content"><%= @storage_unit.about %></p>
+    </div>
+    <div>
+      <% @storage_unit.images.each do |image| %>
+        <%= image_tag image.variant(resize: "300x300") %> &emsp;
+      <% end %><br><br>
+    </div>
   </div>
 
-  <div>
-    <h5>Contact: <%= @storage_unit.contact_no %></h5>
-  </div>
-
-  <div>
-    <h6>Rating: <%= @storage_unit.rating %></h6>
-  </div>
-
-  <div>
-    <h6>About: <%= @storage_unit.about %></h6>
-  </div>
-
-  <div>
-    <% @storage_unit.images.each do |image| %>
-      <%= image_tag image.variant(resize: "300x300") %> &emsp;
-    <% end %><br><br>
-  </div>
-
-  <div>
+  <div class="col-md-4 facility_amenities">
     <%= render partial: 'provided_amenities', locals: {storage_unit: @storage_unit} %><br>
   </div>
+</div>
 
   <div>
-    <h4>Units</h4>
-    <div class="row">
-      <div class="col-2" style="margin-left: 20px">
-        <h6>Unit sizes</h6>
-        <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
-      </div>
-      <div class="col-2" style="margin-left: 20px">
-        <h6>Amenities</h6>
-        <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+    <div class="unit-section">
+      <h4 style="font-size: 18px;">Available Units:</h4>
+      <div class="row">
+        <div class="col-2">
+          <h6>Unit sizes</h6>
+          <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+        </div>
+        <div class="col-2" style="margin-left: 20px">
+          <h6>Amenities</h6>
+          <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+        </div>
       </div>
     </div>
     <div id="unit_list_div">
-      <%= render partial: 'unit_list', locals: {units: @storage_unit.units} %>
+      <%= render partial: 'unit_list', locals: {units: @units} %>
+      <%= will_paginate @units %>
     </div>
   </div>
 

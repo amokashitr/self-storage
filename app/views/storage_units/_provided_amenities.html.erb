@@ -1,7 +1,5 @@
-<div class="form-row">
-  <div class="col-lg-12">
-    <label><h6>Facility Amenities:</h6></label>
-  </div>
+<div class="form-row">  
+    <h6>Facility Amenities:</h6>
 </div>
 
 <% (Amenity::CATEGORY).each do |category| %>
@@ -10,9 +8,9 @@
       <ul class="list-group">
         <% if storage_unit.amenities.category(category).present? %>
           <li class="list-group-item">
-            <label><h6><%= category %></h6></label>
+            <span style="font-size:14px"><%= category %><span><br>
             <% storage_unit.amenities.category(category).each do |amenity| %>
-              <h6><%= amenity.feature %></h6>
+              <span style="font-size:12px">- <%= amenity.feature %></span><br>
             <% end %>
           </li>
         <% end %>

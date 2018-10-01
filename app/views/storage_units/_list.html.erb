@@ -19,21 +19,21 @@
         </td>
 
         <td>
-          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            <%= storage_unit.name %><br>
-            <%= get_address(storage_unit) %><br>
-            Contact: <%= storage_unit.contact_no %><br>
-            Rating: <%= storage_unit.rating %><br>
+          <a class="custom-href custom-link" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+            <span class="unit-detail unit-name"><%= storage_unit.name %></span>
+            <span class="unit-detail unit-address"><%= get_address(storage_unit) %></span>
+            <span class="unit-detail unit-contact">Contact: <%= storage_unit.contact_no %></span>
+            <span class="unit-detail unit-rating"><%= storage_unit.rating %> out of 5</span>
           </a>
         </td>
 
         <td>
-          <% storage_unit.units.each do |unit| %>
+          <% storage_unit.units.take(3).each do |unit| %>
             <h6><%= unit.size %><h6>
             <div><hr></div>
           <% end %>
-          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            Find more units at this facility
+          <a class="custom-href custom-link" style="color: #c00" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+            <span class="unit-detail unit-rating">Find more units at this facility</span>
           </a>
         </td>
 
@@ -41,3 +41,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @storage_units %>

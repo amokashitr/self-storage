@@ -1,10 +1,10 @@
 class UnitsController < ApplicationController
 
   before_action :set_storage_unit
-  before_action :set_unit, except: %i[index new]
+  before_action :set_unit, except: %i[index new filter]
 
   def index
-    @units = @storage_unit.units
+    @units = @storage_unit.units.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -28,17 +28,18 @@ class UnitsController < ApplicationController
   def filter
     @units = []
     if params[:amenity].present?
-      units = Unit.all.associated_amenities(params[:amenity])
+      units = @storage_unit.units.all.associated_amenities(params[:amenity])
     end
-    units ||= Unit.all
+    units ||= @storage_unit.units.all
     if params[:size].present?
       units.all.each do |unit|
         if unit.size == params[:size]
           @units << unit
         end
       end
+      @units = @units.paginate(page: params[:page], per_page: 5)
     else
-      @units = units
+      @units = units.paginate(page: params[:page], per_page: 5)
     end
   end
 

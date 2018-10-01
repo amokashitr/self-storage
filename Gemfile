@@ -70,3 +70,6 @@ gem 'bootstrap'
 
 # Nested form
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
+
+# Pagination
+gem 'will_paginate', '~> 3.1.0'

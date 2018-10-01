@@ -1,28 +1,20 @@
   <td>
-    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
-      <%= image_tag unit.images.first.variant(resize: "100x100") if unit.images.present? %>
-    </a>
+    <%= image_tag unit.images.first.variant(resize: "100x100") if unit.images.present? %>
   </td>
 
   <td>
-    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
-      <h4><%= unit.size %></h4>
-      <h6>Unit</h6>
-    </a>
+    <br><span class="unit-detail unit-name text-centered"><%= unit.size %></span>
+    <span class="unit-detail unit-name text-centered">Unit</span>
   </td>
 
   <td>
-    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
-      <h5><%= unit.offer %><br><h5>
-      <% unit.amenities.each do |amenity| %>
-        <h6><%= amenity.feature %><br><h6>
-      <% end %>
-    </a>
+    <span class="unit-detail unit-name" style="color: green"><%= unit.offer %></span><br>
+    <% unit.amenities.each do |amenity| %>
+      <span class="unit-detail unit-rating"><%= amenity.feature %></span><br>
+    <% end %>
   </td>
 
   <td>
-    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
-      <h4><%= '$' + unit.rate.to_s %></h4>
-      <h6>Per Month</h6>
-    </a>
+    <br><span class="unit-detail unit-name text-centered"><%= '$' + unit.rate.to_s %></span><br>
+    <span class="unit-detail unit-rating text-centered" style="color: #c00">Per Month</span>
   </td>

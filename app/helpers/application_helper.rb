@@ -12,7 +12,7 @@ module ApplicationHelper
     storage_unit.units.each do |unit|
       sizes << unit.size
     end
-    sizes.uniq
+    sizes.sort.uniq
   end
 
   def load_amenities(storage_unit)
@@ -50,7 +50,7 @@ module ApplicationHelper
     Unit.all.each do |unit|
       sizes << unit.size
     end
-    sizes.uniq
+    sizes.sort.uniq
   end
 
 end

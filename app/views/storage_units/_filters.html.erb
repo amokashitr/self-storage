@@ -3,8 +3,8 @@
     <div>
       <% Amenity.all.each do |amenity| %>
         <div>
-          <%= check_box_tag 'amenities[]', amenity.feature, false, class: 'storage_unit_filters' %>
-          <%= amenity.feature %>
+          <span class="unit-detail unit-rating"><%= check_box_tag 'amenities[]', amenity.feature, false, class: 'storage_unit_filters' %>
+          <%= amenity.feature %></span>
         </div>
       <% end %>
     </div><br>
