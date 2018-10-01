@@ -21,6 +21,11 @@ class StorageUnit < ApplicationRecord
     joins(:amenities).where('amenities.feature like ?', "%#{feature}%").references(:amenities)
   }
 
+  scope :unit_size, ->(length, breadth) {
+    joins(:units).where('units.length = ?', length).references(:units).
+    joins(:units).where('units.breadth = ?', breadth).references(:units)
+  }
+
   # Currently the rating is set as default as review / rating feature has not been implemented
   before_create :set_rating
   

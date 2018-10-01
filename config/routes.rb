@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :storage_units do
-    resources :units
+    resources :units do
+      get 'filter', on: :collection
+    end
     get 'filter', on: :collection
   end
 

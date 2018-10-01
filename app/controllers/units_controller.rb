@@ -25,6 +25,23 @@ class UnitsController < ApplicationController
     @unit.destroy
   end
 
+  def filter
+    @units = []
+    if params[:amenity].present?
+      units = Unit.all.associated_amenities(params[:amenity])
+    end
+    units ||= Unit.all
+    if params[:size].present?
+      units.all.each do |unit|
+        if unit.size == params[:size]
+          @units << unit
+        end
+      end
+    else
+      @units = units
+    end
+  end
+
   private
 
     def set_unit

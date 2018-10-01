@@ -11,6 +11,10 @@ class StorageUnitsController < ApplicationController
     @storage_unit.save
   end
 
+  def show
+    @units = @storage_unit.units
+  end
+
   def update
     @storage_unit.update_with_images(params[:image_ids], storage_unit_params)
     @storage_unit.update_amenities(params[:amenity_ids])
@@ -21,18 +25,23 @@ class StorageUnitsController < ApplicationController
   end
 
   def filter
-    return @storage_units unless (params[:filters].present? || params[:sort_by].present?)
+    return @storage_units unless (params[:amenities].present? || params[:sort_by].present? || params[:unit_size].present?)
     if params[:sort_by].present?
-      @storage_units = @storage_units.order(:name) if params[:sort_by] == 'name'
-      @storage_units = @storage_units.order(rating: :desc) if params[:sort_by] == 'rating' 
+      @storage_units = (params[:sort_by] == 'rating') ? @storage_units.order(rating: :desc)
+                                                      : @storage_units.order(params[:sort_by])
     end
-    if params[:filters].present?
+    if params[:unit_size].present?
+      size = params[:unit_size].split('X')
+      @storage_units = @storage_units.unit_size(size[0], size[1])
+    end
+    if params[:amenities].present?
       storage_units = []
-      params[:filters].each do |filter|
-        storage_units << @storage_units.associated_amenities(filter)
+      params[:amenities].each do |amenity|
+        storage_units << @storage_units.associated_amenities(amenity)
       end
       @storage_units = storage_units.inject(:&)
     end
+    @storage_units = @storage_units.uniq
   end
 
   private

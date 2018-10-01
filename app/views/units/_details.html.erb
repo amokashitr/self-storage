@@ -1,0 +1,28 @@
+  <td>
+    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
+      <%= image_tag unit.images.first.variant(resize: "100x100") if unit.images.present? %>
+    </a>
+  </td>
+
+  <td>
+    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
+      <h4><%= unit.size %></h4>
+      <h6>Unit</h6>
+    </a>
+  </td>
+
+  <td>
+    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
+      <h5><%= unit.offer %><br><h5>
+      <% unit.amenities.each do |amenity| %>
+        <h6><%= amenity.feature %><br><h6>
+      <% end %>
+    </a>
+  </td>
+
+  <td>
+    <a class="custom-href" href="<%= storage_unit_unit_path(id: unit.id, storage_unit_id: @storage_unit.id) %>" data-turbolinks="false">
+      <h4><%= '$' + unit.rate.to_s %></h4>
+      <h6>Per Month</h6>
+    </a>
+  </td>

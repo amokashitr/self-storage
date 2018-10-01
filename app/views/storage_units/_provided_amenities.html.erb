@@ -1,6 +1,6 @@
 <div class="form-row">
   <div class="col-lg-12">
-    <label><h6>Provided Amenities:</h6></label>
+    <label><h6>Facility Amenities:</h6></label>
   </div>
 </div>
 
@@ -8,12 +8,11 @@
   <div class="form-row">
     <div class="col-lg-12">
       <ul class="list-group">
-        <% if Amenity.category(category).first.present? %>
+        <% if storage_unit.amenities.category(category).present? %>
           <li class="list-group-item">
             <label><h6><%= category %></h6></label>
-            <% Amenity.category(category).each do |amenity| %>
-              <h6>&emsp;<%= check_box_tag 'amenity_ids[]', amenity.id, (f.object.amenities.include? amenity) %>&ensp;
-              <%= amenity.feature %></h6>
+            <% storage_unit.amenities.category(category).each do |amenity| %>
+              <h6><%= amenity.feature %></h6>
             <% end %>
           </li>
         <% end %>

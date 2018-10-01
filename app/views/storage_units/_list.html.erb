@@ -1,20 +1,42 @@
 <h1>Storage Units</h1>
 
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th colspan="3"> Name </th>
-      <th colspan="9">Actions</th>
+      <th style="width: 25%"></th>
+      <th style="width: 40%"><h6>Details</h6></th>
+      <th style="width: 35%"><h6>Units</h6></th>
     </tr>
   </thead>
 
   <tbody>
     <% @storage_units.each do |storage_unit| %>
       <tr>
-        <td><%= storage_unit.name %></td>
-        <td><%= link_to 'Show', storage_unit %></td>
-        <td><%= link_to 'Edit', edit_storage_unit_path(storage_unit) %></td>
-        <td><%= link_to 'Destroy', storage_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+            <%= image_tag storage_unit.images.first.variant(resize: "100x100") if storage_unit.images.present? %>
+          </a>
+        </td>
+
+        <td>
+          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+            <%= storage_unit.name %><br>
+            <%= get_address(storage_unit) %><br>
+            Contact: <%= storage_unit.contact_no %><br>
+            Rating: <%= storage_unit.rating %><br>
+          </a>
+        </td>
+
+        <td>
+          <% storage_unit.units.each do |unit| %>
+            <h6><%= unit.size %><h6>
+            <div><hr></div>
+          <% end %>
+          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+            Find more units at this facility
+          </a>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
