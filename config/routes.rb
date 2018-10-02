@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin/', as: 'rails_admin'
   resources :storage_units do
     resources :units do
       get 'filter', on: :collection
