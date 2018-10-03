@@ -31,3 +31,33 @@ $(document).on('change', '#filter_units_by_size, #filter_units_by_amenity', func
     data: {size: size, amenity: amenity}
   });
 });
+
+$(document).ready(function () {
+  $('.digg_pagination a').each(function () {
+    $(this).attr("data-turbolinks", false);
+  })
+});
+
+function intializeDataTableSort() {
+  $('.datatable').DataTable({
+    dom: "<'form-row'<'col'f><'col-auto'l>><'row'<'col-md-12't>><'form-row'<'col-auto'p>>",
+    iDisplayLength: 10,
+    pagingType: 'simple_numbers',
+    language: {
+                lengthMenu: "Per Page: _MENU_ ",
+                paginate: {
+                  next: '<i class="fa fa-arrow-right grey">',
+                  previous: '<i class="fa fa-arrow-left grey">'  
+                }
+    },
+    info:     false,
+    aoColumnDefs: [{
+                      bSortable: false,
+                      aTargets: [-1]
+    }],
+    drawCallback: function(settings) {
+      var pagination = $(this).closest('.dataTables_wrapper').find('.dataTables_paginate');
+      pagination.toggle(this.api().page.info().pages > 1);
+    }
+  });
+}

@@ -1,6 +1,6 @@
 <h1>Storage Units</h1>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered datatable">
   <thead>
     <tr>
       <th style="width: 25%"></th>
@@ -42,3 +42,7 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="pagination">
+  <%= js_will_paginate @storage_units %>
+</div>

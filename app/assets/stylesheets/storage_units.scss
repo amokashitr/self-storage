@@ -100,3 +100,12 @@ h5 {
 .text-centered {
   text-align:center;
 }
+
+.pagination {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    .previous_page, .next_page, em, a {
+      margin: 0 10px;
+  }
+}

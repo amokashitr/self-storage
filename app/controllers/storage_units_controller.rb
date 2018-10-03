@@ -6,13 +6,17 @@ class StorageUnitsController < ApplicationController
     @storage_unit = StorageUnit.new
   end
 
+  def index
+    @storage_units = @storage_units.paginate(page: params[:page], per_page: 5)
+  end
+
   def create
     @storage_unit = StorageUnit.new(storage_unit_params)
     @storage_unit.save
   end
 
   def show
-    @units = @storage_unit.units
+    @units = @storage_unit.units.paginate(page: params[:page], per_page: 5)
   end
 
   def update
@@ -25,7 +29,6 @@ class StorageUnitsController < ApplicationController
   end
 
   def filter
-    return @storage_units unless (params[:amenities].present? || params[:sort_by].present? || params[:unit_size].present?)
     if params[:sort_by].present?
       @storage_units = (params[:sort_by] == 'rating') ? @storage_units.order(rating: :desc)
                                                       : @storage_units.order(params[:sort_by])
@@ -41,7 +44,7 @@ class StorageUnitsController < ApplicationController
       end
       @storage_units = storage_units.inject(:&)
     end
-    @storage_units = @storage_units.uniq
+    @storage_units = @storage_units.uniq.paginate(page: params[:page], per_page: 5)
   end
 
   private

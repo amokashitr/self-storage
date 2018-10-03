@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
   before_action :set_unit, except: %i[index new filter]
 
   def index
-    @units = @storage_unit.units
+    @units = @storage_unit.units.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -37,9 +37,9 @@ class UnitsController < ApplicationController
           @units << unit
         end
       end
-      @units = @units
+      @units = @units.paginate(page: params[:page], per_page: 5)
     else
-      @units = units
+      @units = units.paginate(page: params[:page], per_page: 5)
     end
   end
 

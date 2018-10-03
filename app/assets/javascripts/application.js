@@ -19,3 +19,5 @@
 //= require custom
 //= require popper
 //= require bootstrap
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
