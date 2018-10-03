@@ -67,3 +67,5 @@ gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'will_paginate', '~> 3.1.0'
 
 gem 'rails_admin', '~> 1.3'
+
+gem 'friendly_id', '~> 5.2.0'

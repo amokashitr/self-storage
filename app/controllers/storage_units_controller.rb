@@ -1,5 +1,5 @@
 class StorageUnitsController < ApplicationController
-  before_action :set_storage_unit, except: %i[index new]
+  before_action :set_storage_unit, except: %i[index new filter]
   before_action :load_storage_units, only: %i[index filter]
 
   def new
@@ -47,7 +47,7 @@ class StorageUnitsController < ApplicationController
   private
 
     def set_storage_unit
-      @storage_unit = StorageUnit.where(id: params[:id]).first
+      @storage_unit = StorageUnit.find(params[:id])
     end
 
     def storage_unit_params
