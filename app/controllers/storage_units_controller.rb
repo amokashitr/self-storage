@@ -12,7 +12,7 @@ class StorageUnitsController < ApplicationController
   end
 
   def show
-    @units = @storage_unit.units.paginate(page: params[:page], per_page: 5)
+    @units = @storage_unit.units
   end
 
   def update
@@ -41,7 +41,7 @@ class StorageUnitsController < ApplicationController
       end
       @storage_units = storage_units.inject(:&)
     end
-    @storage_units = @storage_units.uniq.paginate(page: params[:page], per_page: 5)
+    @storage_units = @storage_units.uniq
   end
 
   private
@@ -56,8 +56,8 @@ class StorageUnitsController < ApplicationController
     end
 
     def load_storage_units
-      @storage_units = params[:city_zip].present? ? StorageUnit.city_zip(params[:city_zip]).paginate(page: params[:page], per_page: 5)
-                                                  : StorageUnit.all.paginate(page: params[:page], per_page: 5)
+      @storage_units = params[:city_zip].present? ? StorageUnit.city_zip(params[:city_zip])
+                                                  : StorageUnit.all
     end
 
 end
