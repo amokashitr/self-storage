@@ -21,9 +21,11 @@
       <p class="about-content"><%= @storage_unit.about %></p>
     </div>
     <div>
-      <% @storage_unit.images.each do |image| %>
-        <%= image_tag image.variant(resize: "300x300") %> &emsp;
-      <% end %><br><br>
+        <% image1 = rand(1..10).to_s %>
+        <% image2 = rand(11..20).to_s %>
+        <%= image_tag (image1 + '.jpg'), size: '100x100' %> &emsp;
+        <%= image_tag (image2 + '.jpg'), size: '100x100' %> &emsp;
+      <br><br>
     </div>
   </div>
 

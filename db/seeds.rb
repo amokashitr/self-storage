@@ -88,14 +88,16 @@ for i in 0..9
   end
 end
 
-StorageUnit.all.each do |storage_unit|
-  image1 = rand(1..10).to_s
-  image2 = rand(11..20).to_s
-  storage_unit.images.attach(io: File.open('./app/assets/images/' + image1 + '.jpg'), filename: image1 + '.jpg')
-  storage_unit.images.attach(io: File.open('./app/assets/images/' + image2 + '.jpg'), filename: image2 + '.jpg')
-end
+=begin
+  StorageUnit.all.each do |storage_unit|
+    image1 = rand(1..10).to_s
+    image2 = rand(11..20).to_s
+    storage_unit.images.attach(io: File.open('./app/assets/images/' + image1 + '.jpg'), filename: image1 + '.jpg')
+    storage_unit.images.attach(io: File.open('./app/assets/images/' + image2 + '.jpg'), filename: image2 + '.jpg')
+  end
 
-Unit.all.each do |unit|
-  image = 'u' + rand(1..6).to_s
-  unit.images.attach(io: File.open('./app/assets/images/' + image + '.png'), filename: image + '.png')
-end
+  Unit.all.each do |unit|
+    image = 'u' + rand(1..6).to_s
+    unit.images.attach(io: File.open('./app/assets/images/' + image + '.png'), filename: image + '.png')
+  end
+=end

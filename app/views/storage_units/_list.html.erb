@@ -14,7 +14,8 @@
       <tr>
         <td>
           <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            <%= image_tag storage_unit.images.first.variant(resize: "100x100") if storage_unit.images.present? %>
+            <% image = rand(1..20).to_s %>
+            <%= image_tag (image + '.jpg'), size: '100x100' %>
           </a>
         </td>
 
