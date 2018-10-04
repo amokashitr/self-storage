@@ -17,7 +17,7 @@
     </div>
 
     <div class="about">
-      <h5>About <%= @storage_unit.name %></h5>
+      <h5><%= t(:about) + ' ' + @storage_unit.name %></h5>
       <p class="about-content"><%= @storage_unit.about %></p>
     </div>
     <div>
@@ -36,15 +36,15 @@
 
   <div>
     <div class="unit-section">
-      <h4 style="font-size: 18px;">Available Units:</h4>
+      <h4 style="font-size: 18px;"><%= t(:available_units) %>:</h4>
       <div class="row">
         <div class="col-2">
-          <h6>Unit sizes</h6>
-          <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+          <h6><%= t(:unit_sizes) %></h6>
+          <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
         </div>
         <div class="col-2" style="margin-left: 20px">
-          <h6>Amenities</h6>
-          <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: 'Please select' , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+          <h6><%= t(:amenities) %></h6>
+          <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
         </div>
       </div>
     </div>

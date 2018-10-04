@@ -1,11 +1,11 @@
-<h1>Storage Units</h1>
+<h1><%= t(:storage_units) %></h1>
 
 <table class="table table-striped table-bordered datatable">
   <thead>
     <tr>
       <th style="width: 25%"></th>
-      <th style="width: 40%"><h6>Details</h6></th>
-      <th style="width: 35%"><h6>Units</h6></th>
+      <th style="width: 40%"><h6><%= t(:details) %></h6></th>
+      <th style="width: 35%"><h6><%= t(:units) %></h6></th>
     </tr>
   </thead>
 
@@ -23,8 +23,8 @@
           <a class="custom-href custom-link" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
             <span class="unit-detail unit-name"><%= storage_unit.name %></span>
             <span class="unit-detail unit-address"><%= get_address(storage_unit) %></span>
-            <span class="unit-detail unit-contact">Contact: <%= storage_unit.contact_no %></span>
-            <span class="unit-detail unit-rating"><%= storage_unit.rating %> out of 5</span>
+            <span class="unit-detail unit-contact"><%= t(:contact) + ': ' + storage_unit.contact_no %></span>
+            <span class="unit-detail unit-rating"><%= storage_unit.rating.to_s + ' ' + t(:out_of) %> 5</span>
           </a>
         </td>
 
@@ -34,7 +34,7 @@
             <div><hr></div>
           <% end %>
           <a class="custom-href custom-link" style="color: #c00" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            <span class="unit-detail unit-rating">Find more units at this facility</span>
+            <span class="unit-detail unit-rating"><%= t(:find_more_units_at_this_facility) %></span>
           </a>
         </td>
 

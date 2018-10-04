@@ -11,8 +11,6 @@ class Unit < ApplicationRecord
   scope :associated_amenities, ->(features) {
     joins(:amenities).where('amenities.feature IN (?)', features).references(:amenities)
   }
-
-  attr_accessor :size
   
   def size
     length.to_s + ' X ' + breadth.to_s

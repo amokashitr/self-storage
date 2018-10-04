@@ -5,7 +5,7 @@
 
   <td>
     <br><span class="unit-detail unit-name text-centered"><%= unit.size %></span>
-    <span class="unit-detail unit-name text-centered">Unit</span>
+    <span class="unit-detail unit-name text-centered"><%= t(:unit) %></span>
   </td>
 
   <td>
@@ -16,6 +16,6 @@
   </td>
 
   <td>
-    <br><span class="unit-detail unit-name text-centered"><%= '$' + unit.rate.to_s %></span><br>
-    <span class="unit-detail unit-rating text-centered" style="color: #c00">Per Month</span>
+    <br><span class="unit-detail unit-name text-centered"><%= t(:currency) + unit.rate.to_s %></span><br>
+    <span class="unit-detail unit-rating text-centered" style="color: #c00"><%= t(:per_month) %></span>
   </td>

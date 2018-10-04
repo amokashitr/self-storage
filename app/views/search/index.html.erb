@@ -8,10 +8,10 @@
             <i class="fas fa-search h4 text-body"></i>
           </div>
           <div class="col">
-            <input class="form-control form-control-lg form-control-borderless" type="search" name='city_zip' id='city_zip' placeholder="Search cities or zip code">
+            <input class="form-control form-control-lg form-control-borderless" type="search" name='city_zip' id='city_zip' placeholder="<%= t(:search_cities_or_zip_code) %>">
           </div>
           <div class="col-auto" style="margin: 2%">
-            <button class="btn btn-lg btn-success" type="submit">Search</button>
+            <button class="btn btn-lg btn-success" type="submit"><%= t(:search) %></button>
           </div>
         </div>
       <% end %>

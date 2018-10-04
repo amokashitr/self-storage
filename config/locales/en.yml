@@ -1,33 +1,29 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  filter: 'Filter'
+  filter_your_search: "Filter your search"
+  search_cities_or_zip_code: "Search cities or zip code"
+  search: "Search"
+  home: "Home"
+  sort_by: "Sort by"
+  unit_size: "Unit size"
+  find_more_units_at_this_facility: "Find more units at this facility"
+  details: "Details"
+  units: "Units"
+  out_of: "out of"
+  about: "About"
+  facility_amenities: "Facility Amenities"
+  available_units: "Available Units"
+  unit_sizes: "Unit sizes"
+  amenities: "Amenities"
+  size: "Size"
+  rates: "Rates"
+  per_month: "Per month"
+  unit: "Unit"
+  storage_units: "Storage Units"
+  rating: "Rating"
+  name: "Name"
+  contact: "Contact"
+  currency: "$"
+  please_select: "Please Select"
+  will_paginate:
+    next_label: "Next"
+    previous_label: "Previous"

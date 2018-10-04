@@ -10,21 +10,21 @@
     </div><br>
 
   <div>
-    <h5>Sort By:</h5>
+    <h5><%= t(:sort_by) %></h5>
     <div>
       <%= radio_button_tag :sort_by, 'name', false, class: 'storage_unit_filters' %>
-      <label for="name">Name</label>
+      <label for="name"><%= t(:name) %></label>
     </div>
     <div>
       <%= radio_button_tag :sort_by, 'rating', false, class: 'storage_unit_filters' %>
-      <label for="rating">Rating</label>
+      <label for="rating"><%= t(:rating) %></label>
     </div>
   </div><br>
   
   <div>
-    <h5>Unit Size:</h5>
+    <h5><%= t(:unit_size) %></h5>
     <div class="col-10">
-      <%= select_tag :unit_size, options_for_select(load_size_of_all_units), include_blank: 'Please select' , class: 'form-group form-control custom-select storage_unit_filters' %>
+      <%= select_tag :unit_size, options_for_select(load_size_of_all_units), include_blank: t(:please_select) , class: 'form-group form-control custom-select storage_unit_filters' %>
     </div>
   </div>
 
