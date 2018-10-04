@@ -71,3 +71,5 @@ gem 'rails_admin', '~> 1.3'
 gem 'friendly_id', '~> 5.2.0'
 
 gem 'jquery-datatables-rails', '~> 3.4.0'
+
+gem 'rails-i18n'
