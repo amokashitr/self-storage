@@ -97,6 +97,10 @@ h5 {
   font-size: 13px;
 }
 
+.unit-address {
+  color:#146fb4;
+}
+
 .text-centered {
   text-align:center;
 }
@@ -108,4 +112,18 @@ h5 {
     .previous_page, .next_page, em, a {
       margin: 0 10px;
   }
+}
+
+.unit-data-rate {
+  float: right;
+  width: 28%;
+  font-size: 15px;
+  color:#146fb4;
+  text-decoration: underline;
+}
+
+.unit-data-offer {
+  overflow: hidden;
+  color: green;
+  font-size: 11px;
 }
