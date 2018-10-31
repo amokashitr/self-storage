@@ -32,14 +32,22 @@ module ApplicationHelper
       if address.street.present?
         storage_unit_address +=  (address.street + ' ')
       end
+
+      if address.address_line_1.present?
+        storage_unit_address +=  (address.address_line_1 + ' ')
+      end
+
       if address.city.present?
         storage_unit_address +=  (address.city + ' ')
       end
-      if address.state.present?
-        storage_unit_address +=  (address.state + ' ')
+      if address.administrative_area.present?
+        storage_unit_address +=  (address.administrative_area + ' ')
       end
       if address.zip.present?
-        storage_unit_address += (address.zip)
+        storage_unit_address += (address.zip + ' ')
+      end
+      if address.country.present?
+        storage_unit_address += (address.country)
       end
     end
     storage_unit_address

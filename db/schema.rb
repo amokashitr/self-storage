@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_081359) do
+ActiveRecord::Schema.define(version: 2018_10_31_073450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,10 +40,12 @@ ActiveRecord::Schema.define(version: 2018_09_30_081359) do
     t.text "street"
     t.string "city"
     t.string "zip"
-    t.string "state"
     t.bigint "storage_unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "country"
+    t.string "address_line_1"
+    t.string "administrative_area"
     t.index ["storage_unit_id"], name: "index_addresses_on_storage_unit_id"
   end
 
@@ -52,6 +54,18 @@ ActiveRecord::Schema.define(version: 2018_09_30_081359) do
     t.text "feature"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "storage_unit_amenities", force: :cascade do |t|
@@ -70,6 +84,8 @@ ActiveRecord::Schema.define(version: 2018_09_30_081359) do
     t.text "contact_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.string "alternatename"
   end
 
   create_table "unit_amenities", force: :cascade do |t|
