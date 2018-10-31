@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+StorageUnit.destroy_all
 Amenity.destroy_all
 Unit.destroy_all
 Address.destroy_all
-StorageUnit.destroy_all
 
 amenities = []
 amenities[0] = Amenity.create(category: 'ACCESS', feature: 'Electronic gate access')
@@ -26,19 +26,19 @@ amenities[8] = Amenity.create(category: 'BILLING', feature: 'Rent due on 1st of 
 amenities[9] = Amenity.create(category: 'BILLING', feature: 'Auto-pay available')
 amenities[10] = Amenity.create(category: 'BILLING', feature: 'Credit cards accepted: Visa, Mastercard, AMEX, Discover')
 
-file_path = Rails.root.join('storageunit.csv')
+file_path = Rails.root.join('qwqwqw.csv')
 STORAGE_UNIT_COLUMNS = ['name', 'contact_no', 'alternatename']
 storage_units_rows = []
 
 def parse_address(row , address)
   address_params = {}
-  address = address.split(' <br> ')
+  address = address.split('<br>')
   return address_params if address&.first == 'null'
   address_params[:country] = address&.last
+  address_params[:zip] = address.third
   address_params[:address_line_1] = address&.first
   address_params[:city] = address.second&.split(', ')&.first
-  address_params[:zip] = address.second&.split(', ')&.last&.split(' ')&.last
-  address_params[:administrative_area] = address.second&.split(', ')&.last&.split(' ')&.first(2)&.join(' ')
+  address_params[:administrative_area] = address.second&.split(', ')&.last
   address_params
 end
 
