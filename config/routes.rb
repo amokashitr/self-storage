@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       get 'retrieve_cities_zip', on: :collection
     end
   end
+  root 'search#index'
+  get '/:locale' => 'search#index', as: 'root_locale'
 
-  get '/:locale' => 'search#index', as: 'root'
   get '/:locale/self_storage/:city/:id', to: 'storage_units#show', as: 'self_storage'
 end

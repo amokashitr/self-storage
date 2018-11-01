@@ -13,7 +13,7 @@
     <nav class="navbar navbar-default" style="background-color: currentColor">
       <div class="container-fluid">
         <div class="navbar-header">
-          <%= link_to t(:home), root_path, class: "navbar-brand", style: 'color:white' %>
+          <%= link_to t(:home), root_locale_path, class: "navbar-brand", style: 'color:white' %>
         </div>
         <div class='nav-right'>
           <%= radio_button_tag 'locale', 'en', I18n.locale == :en, class: 'storage_unit_filters', onchange: 'changeLocale(this)' %>
