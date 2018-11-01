@@ -1,6 +1,9 @@
   <td>
-    <% image = 'u' + rand(1..6).to_s %>
-    <%= image_tag (image + '.png'), size: '100x100' %>
+    <% if unit.images.present? %>
+      <%= image_tag unit.images.first, size: '200x200' %>
+    <% else %>
+      <%= image_tag 'no-image.png', size: '200x200' %>
+    <% end %>
   </td>
 
   <td>

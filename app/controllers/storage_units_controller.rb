@@ -59,7 +59,7 @@ class StorageUnitsController < ApplicationController
     end
 
     def load_storage_units
-      @storage_units = params[:city_zip].present? ? StorageUnit.city_zip(params[:city_zip])
+      @storage_units = params[:city].present? || params[:city_zip].present? ? StorageUnit.city_zip(params[:city] || params[:city_zip])
                                                   : StorageUnit.all
     end
 

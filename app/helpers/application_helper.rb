@@ -34,7 +34,7 @@ module ApplicationHelper
       end
 
       if address.address_line_1.present?
-        storage_unit_address +=  (address.address_line_1 + ' ')
+        storage_unit_address +=  (address.address_line_1 + ', ')
       end
 
       if address.city.present?

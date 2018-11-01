@@ -1,37 +1,39 @@
 <div class="container">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row">
   <div class="col-md-8">
     <h1 class="name-heading"><%= @storage_unit.name.upcase %> </h1>
     <div>
-      <div class="address">
+      <div class="address" style="padding-top: 15px;">
         <h5><%= get_address(@storage_unit) %>&emsp;-&emsp;</h5>
       </div>
 
-      <div class="contact">
-        <h5 style="color: #c00"><%= @storage_unit.contact_no %></h5>
+      <div class="contact" style="padding-top: 15px;">
+        <i class="fa fa-phone-square"></i>
+        <strong><a href="tel:<%= @storage_unit.contact_no %>"><%= @storage_unit.contact_no %></a></strong>
       </div>
     </div>
-
-    <div class="rating">
-      <h5 style="color: #c00"><%= @storage_unit.rating %> out of 5</h5>
-    </div>
-
-    <div class="about">
+    <% if @storage_unit.rating.present? %>
+      <div class="rating" style="padding-top: 15px;">
+        <h5 style="color: #c00"><%= @storage_unit.rating %> out of 5</h5>
+      </div>
+    <% end %>
+    <div class="about" style="padding-top: 15px;">
       <h5><%= t(:about) + ' ' + @storage_unit.name %></h5>
       <p class="about-content"><%= @storage_unit.about %></p>
     </div>
     <div>
-        <% image1 = rand(1..10).to_s %>
-        <% image2 = rand(11..20).to_s %>
-        <%= image_tag (image1 + '.jpg'), size: '100x100' %> &emsp;
-        <%= image_tag (image2 + '.jpg'), size: '100x100' %> &emsp;
+      <% @storage_unit.images.each do |image| %>
+        <%= image_tag image, size: '100x100' %> &emsp;
+      <% end %>
       <br><br>
     </div>
   </div>
-
-  <div class="col-md-4 facility_amenities">
-    <%= render partial: 'provided_amenities', locals: {storage_unit: @storage_unit} %><br>
-  </div>
+  <% if @storage_unit.amenities.present? %>
+    <div class="col-md-4 facility_amenities">
+      <%= render partial: 'provided_amenities', locals: {storage_unit: @storage_unit} %><br>
+    </div>
+  <% end %>
 </div>
 
   <div>
@@ -40,11 +42,11 @@
       <div class="row">
         <div class="col-2">
           <h6><%= t(:unit_sizes) %></h6>
-          <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+          <%= select_tag :filter_units_by_size, options_for_select(load_size(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id, locale: I18n.locale %>
         </div>
         <div class="col-2" style="margin-left: 20px">
           <h6><%= t(:amenities) %></h6>
-          <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id %>
+          <%= select_tag :filter_units_by_amenity, options_for_select(load_amenities(@storage_unit)), include_blank: t(:please_select) , class: 'form-group form-control custom-select', storage_unit_id: @storage_unit.id, locale: I18n.locale %>
         </div>
       </div>
     </div>

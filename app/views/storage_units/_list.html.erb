@@ -1,5 +1,5 @@
 <h1><%= t(:storage_units) %></h1>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <table class="table table-striped table-bordered datatable">
   <thead>
     <tr>
@@ -13,19 +13,26 @@
     <% @storage_units.each do |storage_unit| %>
       <tr>
         <td>
-          <a class="custom-href" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            <% image = rand(1..20).to_s %>
-            <%= image_tag (image + '.jpg'), size: '200x200' %>
+          <a class="custom-href" href="<%= self_storage_path(params[:city], storage_unit) %>" data-turbolinks="false">
+            <% if storage_unit.images.present? %>
+              <%= image_tag storage_unit.images.first, size: '200x200' %>
+            <% else %>
+              <%= image_tag 'no-image.png', size: '200x200' %>
+            <% end %>
           </a>
         </td>
 
         <td>
-          <a class="custom-href custom-link" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+          <a class="custom-href custom-link" href="<%= self_storage_path(params[:city], storage_unit) %>" data-turbolinks="false">
             <span class="unit-detail unit-name"><%= storage_unit.name %></span>
             <span class="unit-detail unit-address"><%= get_address(storage_unit) %></span>
-            <span class="unit-detail unit-contact" style="color: #c00"><%= t(:contact) + ': ' + storage_unit.contact_no %></span>
-            <span class="unit-detail unit-rating" style="color: #c00"><%= storage_unit.rating.to_s + ' ' + t(:out_of) %> 5</span>
           </a>
+          <span class="unit-detail unit-contact" style="color: black">
+            <i class="fa fa-phone-square"></i>
+            <strong><a href="tel:<%= storage_unit.contact_no %>"><%= storage_unit.contact_no %></a></strong>
+          <% if storage_unit.rating.present? %>
+            <span class="unit-detail unit-rating" style="color: #c00"><%= storage_unit.rating.to_s + ' ' + t(:out_of) %> 5</span>
+          <% end %>
         </td>
 
         <td>
@@ -48,3 +55,39 @@
 <div class="pagination">
   <%= js_will_paginate @storage_units %>
 </div>
+
+<style type="text/css">
+  table tr td {
+    height: 160px;
+    text-align: center;
+  }
+  table tr td:nth-child(2) {
+    text-align: left;
+    color: #747474;
+  }
+  table thead th {
+    border-bottom: none !important;
+  }
+  table tr td a img {
+    height: 100%;
+    width: 75%;
+    margin: 0 auto;
+  }
+  .unit-address {
+    font-size: 14px;
+    color: #747474;
+  }
+  .unit-name, .unit-contact {
+    font-size: 14px;
+    color: #747474;
+  }
+  .table-striped tbody tr {
+    background-color: inherit !important;
+    box-shadow: 0 1px 4px -1px rgba(0,0,0,.2);
+  }
+  .table-bordered td {
+    border-left:  none;
+    border-bottom:  none;
+    border-right:  none;
+  }
+</style>
