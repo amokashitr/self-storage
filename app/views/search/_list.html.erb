@@ -1,0 +1,10 @@
+</br> <h3 class="text-danger">Featured Cities</h3>
+	<% @cities.in_groups_of(4).each do |cities| %>
+		<div class="row justify-content-center">
+			<% cities.compact.each do |city| %>
+				<div class="col-md-3 col-3">
+					<span class="ml-4"><%= link_to city, self_storages_path(city) %></span>
+				</div>
+			<% end %>
+		</div>
+	<% end %>

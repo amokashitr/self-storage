@@ -1,6 +1,6 @@
 <div class="container" style="background-image: image_url('images/storage-unit-bg.jpg')">
 <br/>
-	<div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-8">
       <%= form_tag storage_units_path, method: :get, class: 'card card-sm' do |form| %>
         <div class="card-body row no-gutters align-items-center">
@@ -17,8 +17,12 @@
       <% end %>
     </div>
   </div>
+  <div class= "col-12 justify-content-center">
+    <%= render partial: 'list', locals: { cities: @cities } %>
+  </div>
 </div>
 
 <script>
-  loadCitiesZip();
+  var locale = "<%= I18n.locale.to_s %>"
+  loadCitiesZip(locale);
 </script>
