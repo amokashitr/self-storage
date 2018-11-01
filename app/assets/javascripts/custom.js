@@ -1,7 +1,14 @@
-function loadCitiesZip() {
+function changeLocale(e) {
+  path = window.location.pathname.split('/');
+  path[1] = $(e).val();
+  path = path.join('/')
+  window.location =  window.location.origin + path
+}
+
+function loadCitiesZip(locale) {
   var list;
   $.ajax({
-    url: `/search/retrieve_cities_zip`,
+    url: '/' + locale + '/search/retrieve_cities_zip',
     type: "GET",
     dataType: 'json',
     success: function(data) {
@@ -24,8 +31,9 @@ $(document).on('change', '#filter_units_by_size, #filter_units_by_amenity', func
   var id = $(this).attr("storage_unit_id");
   var size = $('#filter_units_by_size').val();
   var amenity = $('#filter_units_by_amenity').val();
+  var locale = $(this).attr("locale");
   $.ajax({
-    url: `/storage_units/` + id + `/units/filter`,
+    url: '/' + locale + '/storage_units/' + id + '/units/filter',
     type: "GET",
     dataType: 'script',
     data: {size: size, amenity: amenity}
@@ -47,7 +55,7 @@ function intializeDataTableSort() {
                 lengthMenu: "Per Page: _MENU_ ",
                 paginate: {
                   next: '<i class="fa fa-arrow-right grey">',
-                  previous: '<i class="fa fa-arrow-left grey">'  
+                  previous: '<i class="fa fa-arrow-left grey">'
                 }
     },
     info:     false,

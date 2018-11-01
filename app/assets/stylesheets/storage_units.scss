@@ -21,7 +21,7 @@ h5 {
   color: #333;
 }
 .contact, .address {
-  float: left;  
+  float: left;
 }
 .rating, .about{
   display: inline-block;
@@ -33,19 +33,19 @@ h5 {
   color: #333;
 }
 
-.about-content {  
+.about-content {
   font-size: 13px;
   color: #333;
 }
 
-.facility_amenities {      
+.facility_amenities {
     margin-top: 9.9%;
 }
 .facility_amenities h6{
   font-size: 15px;
   font-weight: bold;
   border-bottom: 2px solid #333;
-  width: 100%; 
+  width: 100%;
 }
 .unit-section {
   background-color: #334a58;
@@ -86,7 +86,7 @@ h5 {
 .unit-name {
   font-size: 18px;
   font-weight: bold;
-  text-decoration: none;  
+  text-decoration: none;
   color: #333;
   &:hover {
     color: #333;
@@ -94,7 +94,7 @@ h5 {
   }
 }
 .unit-address, .unit-contact, .unit-rating {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .unit-address {
