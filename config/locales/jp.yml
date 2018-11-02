@@ -28,3 +28,4 @@ jp:
     next_label: "次"
     previous_label: "前"
   featured_cities: '注目の都市'
+  units_not_available: "利用できない単位"

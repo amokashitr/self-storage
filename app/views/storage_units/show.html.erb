@@ -51,7 +51,11 @@
       </div>
     </div>
     <div id="unit_list_div">
-      <%= render partial: 'unit_list', locals: {units: @units} %>
+      <% if @units.present? %>
+        <%= render partial: 'unit_list', locals: {units: @units} %>
+      <% else %>
+          <div style="text-align: center; padding: 20px;"><strong><%= t(:units_not_available) %></strong></div>
+      <% end %>
     </div>
   </div>
 

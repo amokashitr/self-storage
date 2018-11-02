@@ -36,15 +36,19 @@
         </td>
 
         <td>
-          <a class="custom-href custom-link" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
-            <% storage_unit.units.take(3).each do |unit| %>
-              <span style="font-weight: bold"><%= unit.size %></span>
-              <span class="unit-data-rate"><%= t(:currency) + unit.rate.to_s %></span><br>
-              <span class="unit-data-offer"><%= unit.offer %></span>
-              <div><hr></div>
-            <% end %>
-            <span class="unit-detail unit-rating" style="color: #c00"><%= t(:find_more_units_at_this_facility) + ' >>' %></span>
-          </a>
+          <% if storage_unit.units.present? %>
+            <a class="custom-href custom-link" href="<%= storage_unit_path(storage_unit) %>" data-turbolinks="false">
+                <% storage_unit.units.take(3).each do |unit| %>
+                  <span style="font-weight: bold"><%= unit.size %></span>
+                  <span class="unit-data-rate"><%= t(:currency) + unit.rate.to_s %></span><br>
+                  <span class="unit-data-offer"><%= unit.offer %></span>
+                  <div><hr></div>
+                <% end %>
+                <span class="unit-detail unit-rating" style="color: #c00"><%= t(:find_more_units_at_this_facility) + ' >>' %></span>
+            </a>
+          <% else %>
+            <span><strong><%= t(:units_not_available) %></strong></span>
+          <% end %>
         </td>
 
       </tr>
