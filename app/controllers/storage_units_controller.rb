@@ -30,7 +30,7 @@ class StorageUnitsController < ApplicationController
 
   def filter
     if params[:sort_by].present?
-      @storage_units = (params[:sort_by] == 'rating') ? @storage_units.order(rating: :desc)
+      @storage_units = (params[:sort_by] == 'rating') ? @storage_units.city_zip(params[:city] || params[:city_zip])
                                                       : @storage_units.order(params[:sort_by])
     end
     if params[:unit_size].present?

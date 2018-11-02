@@ -20,7 +20,7 @@
       <label for="rating"><%= t(:rating) %></label>
     </div>
   </div><br>
-  
+
   <div>
     <h5><%= t(:unit_size) %></h5>
     <div class="col-10">
@@ -29,6 +29,7 @@
   </div>
 
   <%= hidden_field_tag 'city_zip', params[:city_zip] if params[:city_zip].present? %>
+  <%= hidden_field_tag 'city', params[:city] if params[:city].present? %>
 
   <button type="submit" id="filter-btn" style="display: none;"></button>
 
